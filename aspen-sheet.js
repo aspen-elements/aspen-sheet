@@ -1,5 +1,7 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-import { AspenSecurableMixin } from './aspen-security/aspen-securable-mixin';
+import { AspenSecurableMixin } from '@aspen-elements/aspen-securable-mixin'
+import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+
 /**
  * `aspen-sheet`
  * common base class
@@ -7,7 +9,7 @@ import { AspenSecurableMixin } from './aspen-security/aspen-securable-mixin';
  * @customElement
  * @polymer
  */
-class AspenSheet extends AspenSecurableMixin(Polymer.Element) {
+class AspenSheet extends AspenSecurableMixin(PolymerElement) {
   /**
    * String providing the tag name to register the element under.
    */
@@ -47,7 +49,7 @@ class AspenSheet extends AspenSecurableMixin(Polymer.Element) {
   ready() {
     super.ready();
 
-    Polymer.RenderStatus.afterNextRender(this, function() {});
+    afterNextRender(this, function() {});
   }
 
   _handleCardSelected(prefix) {

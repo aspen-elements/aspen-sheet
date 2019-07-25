@@ -1,6 +1,6 @@
-# \<aspen-sheet\>
+# <aspen-sheet\>
 
-common base  cla classss
+common base classes to inherit from all other classes
 
 ## Install the Polymer-CLI
 

@@ -1,5 +1,5 @@
 {
-  "description": "common base  cla classss",
+  "description": "base class to extend other classss",
   "name": "@polymer/aspen-sheet",
   "version": "",
   "resolutions": {
@@ -10,6 +10,7 @@
   },
   "main": "aspen-sheet.js",
   "dependencies": {
+    "@aspen-elements/aspen-securable-mixin": "^0.5.0",
     "@polymer/polymer": "^3.0.0",
     "node": "^12.7.0",
     "npm": "^6.10.2"
