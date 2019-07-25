@@ -28,12 +28,6 @@ class AspenSheet extends AspenSecurableMixin(Polymer.Element) {
       canShare: {
         type: Boolean,
         value: false
-      },
-
-      /** The ID of the company */
-      companyId: {
-        type: String,
-        value: ''
       }
     };
   }
@@ -56,17 +50,8 @@ class AspenSheet extends AspenSecurableMixin(Polymer.Element) {
     Polymer.RenderStatus.afterNextRender(this, function() {});
   }
 
-  _handleBookmark(e) {
-    this.close();
-    this.dispatchEvent(
-      new CustomEvent('card-bookmarked', {
-        bubbles: true,
-        composed: true,
-        detail: {
-          model: this.model
-        }
-      })
-    );
+  _handleCardSelected(prefix) {
+    window.location = `/${prefix}/` + this.model.$key;
   }
 
   _requestDelete(e) {
@@ -81,56 +66,22 @@ class AspenSheet extends AspenSecurableMixin(Polymer.Element) {
     );
   }
 
+  _handleBookmark(e) {
+    this.close();
+    this.dispatchEvent(
+      new CustomEvent('card-bookmarked', {
+        bubbles: true,
+        composed: true,
+        detail: {
+          model: this.model
+        }
+      })
+    );
+  }
+
   _handleLaunch() {
     this.close();
     window.open(this.model.url);
-  }
-
-  /**
-   * This method opens an Indeed.com job search in a new window, showing all jobs in a particular
-   * company.
-   */
-
-  _handleIndeed() {
-    window.open(`https://www.indeed.com/jobs?q=${this.model.name}`);
-  }
-
-  /**
-   * This method is responsible for displaying the project pipeline for the company
-   */
-  _handlePipeline() {
-    window.location = '/company-pipeline/' + this.model.$key;
-  }
-
-  /**
-   * This method displays the Twitter page for the resource.
-   */
-
-  _handleTwitter() {
-    window.open(`https://www.twitter.com/${this.model.twitter}`);
-  }
-
-  /**
-   * This method displays the map view showing the location of the company.
-   */
-  _handleMap() {
-    window.open('https://www.google.com/maps/place/' + this.model.address);
-  }
-
-  /**
-   * This method opens a new window and searches for clinical trials lead by the company.
-   */
-  _handleClinicalTrial() {
-    let name = this.model.name.replace(' ', '%20');
-    let url = `https://clinicaltrials.gov/ct2/results?lead=${name}&spons=${name}`;
-    window.open(url);
-  }
-
-  /**
-   * This method displays the company news.
-   */
-  _handleNews() {
-    window.location = '/resource-news/' + this.model.$key;
   }
 
   open() {

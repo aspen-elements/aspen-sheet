@@ -10,7 +10,9 @@
   },
   "main": "aspen-sheet.js",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0"
+    "@polymer/polymer": "^3.0.0",
+    "node": "^12.7.0",
+    "npm": "^6.10.2"
   },
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.0.0",
